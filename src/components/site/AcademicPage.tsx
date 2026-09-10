@@ -6,18 +6,65 @@ import { CtaGroup, AdmissionsCta } from "@/components/site/CtaGroup";
 import Faq, { type FaqItem } from "@/components/site/Faq";
 import { TBC } from "@/lib/school";
 
+export type AcademicStage = {
+  name: string;
+  grades: string;
+  learningAreas: string[];
+};
+
 export type AcademicPageConfig = {
   name: string;
   image: string;
   intro: string;
   description: string[];
+  /** "At a glance" values — leave undefined to show the TBC marker. */
+  grades?: string;
+  curriculum?: string;
+  assessmentSummary?: string;
+  dayOrBoarding?: string;
   learningApproach: string[];
   learningAreas: string[];
+  /** Optional sub-stages (e.g. Lower and Upper Primary) shown instead of one list. */
+  stages?: AcademicStage[];
+  skills?: string[];
+  assessment?: string[];
+  pathways?: { name: string; description: string }[];
   support: string[];
   facilities: string[];
   coCurricular: string[];
   faqs: FaqItem[];
 };
+
+function Chips({ items }: { items: string[] }) {
+  return (
+    <ul className="mt-4 flex flex-wrap gap-2">
+      {items.map((item) => (
+        <li
+          key={item}
+          className="rounded-full border border-border bg-card px-3 py-1.5 text-sm text-foreground"
+        >
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Bullets({ items }: { items: string[] }) {
+  return (
+    <ul className="mt-4 space-y-2">
+      {items.map((item) => (
+        <li key={item} className="flex gap-3 text-muted-foreground">
+          <span
+            aria-hidden="true"
+            className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary"
+          />
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function AcademicPage({ config }: { config: AcademicPageConfig }) {
   return (
@@ -45,34 +92,99 @@ export default function AcademicPage({ config }: { config: AcademicPageConfig })
               </p>
             ))}
 
-            <h3 className="mt-10 text-xl font-bold text-foreground">Our learning approach</h3>
-            <ul className="mt-4 space-y-2">
-              {config.learningApproach.map((item) => (
-                <li key={item} className="flex gap-3 text-muted-foreground">
-                  <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            {config.pathways && config.pathways.length > 0 && (
+              <>
+                <h3 className="mt-10 text-xl font-bold text-foreground">Pathways offered</h3>
+                <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                  {config.pathways.map((p) => (
+                    <div key={p.name} className="rounded-xl border border-border bg-card p-5">
+                      <h4 className="text-lg font-bold text-foreground">{p.name}</h4>
+                      <p className="mt-2 text-sm text-muted-foreground">{p.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
 
-            <h3 className="mt-10 text-xl font-bold text-foreground">Learning areas</h3>
-            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-              {config.learningAreas.map((item) => (
-                <li key={item} className="rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground">
-                  {item}
-                </li>
-              ))}
-            </ul>
+            {config.stages && config.stages.length > 0 ? (
+              <>
+                <h3 className="mt-10 text-xl font-bold text-foreground">Learning areas</h3>
+                <div className="mt-4 space-y-6">
+                  {config.stages.map((stage) => (
+                    <div key={stage.name} className="rounded-xl border border-border bg-card p-5">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-primary">
+                        {stage.grades}
+                      </p>
+                      <h4 className="mt-1 text-lg font-bold text-foreground">{stage.name}</h4>
+                      <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                        {stage.learningAreas.map((item) => (
+                          <li
+                            key={item}
+                            className="rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground"
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              config.learningAreas.length > 0 && (
+                <>
+                  <h3 className="mt-10 text-xl font-bold text-foreground">Learning areas</h3>
+                  <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+                    {config.learningAreas.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )
+            )}
+
+            {config.skills && config.skills.length > 0 && (
+              <>
+                <h3 className="mt-10 text-xl font-bold text-foreground">
+                  Skills learners develop
+                </h3>
+                <Chips items={config.skills} />
+              </>
+            )}
+
+            <h3 className="mt-10 text-xl font-bold text-foreground">Our learning approach</h3>
+            <Bullets items={config.learningApproach} />
+
+            {config.assessment && config.assessment.length > 0 && (
+              <>
+                <h3 className="mt-10 text-xl font-bold text-foreground">Assessment methods</h3>
+                <Bullets items={config.assessment} />
+              </>
+            )}
 
             <h3 className="mt-10 text-xl font-bold text-foreground">Learner support</h3>
-            <ul className="mt-4 space-y-2">
-              {config.support.map((item) => (
-                <li key={item} className="flex gap-3 text-muted-foreground">
-                  <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <Bullets items={config.support} />
+
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Link
+                to="/admissions"
+                hash="visit"
+                className="inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-dark"
+              >
+                Book a School Visit
+              </Link>
+              <Link
+                to="/academics"
+                className="inline-flex min-h-11 items-center justify-center rounded-lg border border-border px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+              >
+                Back to our curriculum
+              </Link>
+            </div>
           </div>
 
           <aside className="space-y-6">
@@ -81,32 +193,29 @@ export default function AcademicPage({ config }: { config: AcademicPageConfig })
               <dl className="mt-4 space-y-4 text-sm">
                 <div>
                   <dt className="font-medium text-foreground">Grades offered</dt>
-                  <dd className="mt-1">
-                    <Tbc>{TBC}</Tbc>
+                  <dd className="mt-1 text-muted-foreground">
+                    {config.grades ?? <Tbc>{TBC}</Tbc>}
                   </dd>
                 </div>
                 <div>
                   <dt className="font-medium text-foreground">Curriculum</dt>
-                  <dd className="mt-1">
-                    <Tbc>{TBC}</Tbc>
+                  <dd className="mt-1 text-muted-foreground">
+                    {config.curriculum ?? <Tbc>{TBC}</Tbc>}
                   </dd>
                 </div>
                 <div>
                   <dt className="font-medium text-foreground">Assessment</dt>
-                  <dd className="mt-1">
-                    <Tbc>{TBC}</Tbc>
+                  <dd className="mt-1 text-muted-foreground">
+                    {config.assessmentSummary ?? <Tbc>{TBC}</Tbc>}
                   </dd>
                 </div>
                 <div>
                   <dt className="font-medium text-foreground">Day or boarding</dt>
-                  <dd className="mt-1">
-                    <Tbc>{TBC}</Tbc>
+                  <dd className="mt-1 text-muted-foreground">
+                    {config.dayOrBoarding ?? <Tbc>{TBC}</Tbc>}
                   </dd>
                 </div>
               </dl>
-              <p className="mt-4 text-xs text-muted-foreground">
-                These details will be published as soon as the Academy confirms them.
-              </p>
             </div>
 
             <div className="rounded-xl border border-border bg-card p-6">
