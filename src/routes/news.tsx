@@ -103,18 +103,30 @@ function NewsPage() {
 
       <Section>
         <SectionHeading
-          title="Latest news and announcements"
-          description="This page publishes only current items. Past items move to the news archive."
+          title="Term III, 2026 school event schedule"
+          description="Key dates for the term, including assessments, trips and closing day."
         />
-        <div className="mx-auto max-w-3xl rounded-xl border border-dashed border-border bg-card p-8 text-center">
-          <CalendarDays aria-hidden="true" className="mx-auto mb-4 h-10 w-10 text-primary" />
-          <p className="text-base text-muted-foreground">
-            There are no current news items published yet. News, announcements and upcoming events
-            will appear here as soon as the Academy supplies them.
-          </p>
-          <p className="mt-4">
-            <Tbc>{TBC}</Tbc>
-          </p>
+        <div className="mx-auto max-w-4xl overflow-x-auto rounded-xl border border-border bg-card">
+          <table className="w-full min-w-[640px] text-left text-sm">
+            <thead>
+              <tr className="border-b border-border bg-muted">
+                <th scope="col" className="px-4 py-3 font-semibold text-foreground">Event</th>
+                <th scope="col" className="px-4 py-3 font-semibold text-foreground">Learners/Parents Involved</th>
+                <th scope="col" className="px-4 py-3 font-semibold text-foreground">Date</th>
+                <th scope="col" className="px-4 py-3 font-semibold text-foreground">Charges</th>
+              </tr>
+            </thead>
+            <tbody>
+              {termEvents.map((e) => (
+                <tr key={e.event} className="border-b border-border last:border-0">
+                  <td className="px-4 py-3 font-medium text-foreground">{e.event}</td>
+                  <td className="px-4 py-3 text-muted-foreground">{e.involved}</td>
+                  <td className="px-4 py-3 text-muted-foreground">{e.date}</td>
+                  <td className="px-4 py-3 text-muted-foreground">{e.charges ?? "—"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </Section>
 
