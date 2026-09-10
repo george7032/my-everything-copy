@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CalendarDays, FileText, Lock } from "lucide-react";
+import { FileText, Lock } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/site/PageHero";
 import { Section, SectionHeading, Tbc } from "@/components/site/Section";
