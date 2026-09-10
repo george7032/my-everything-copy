@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CalendarDays, FileText, Lock } from "lucide-react";
+import { FileText, Lock } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/site/PageHero";
 import { Section, SectionHeading, Tbc } from "@/components/site/Section";
@@ -37,6 +37,23 @@ const categories = [
   "Events",
   "Educational Articles",
   "Photo Galleries",
+];
+
+const termEvents = [
+  { event: "Resumption Term III 2026 — Boarders", involved: "Boarders", date: "24th August, 2026" },
+  { event: "Resumption Term III 2026 — Day Scholars", involved: "Day Scholars", date: "25th August, 2026" },
+  { event: "Entry Assessments", involved: "All", date: "26th – 31st August, 2026" },
+  { event: "G9 Selection of Pathways/Senior Schools", involved: "G9 Candidates & Parents", date: "24th August – 11th September, 2026" },
+  { event: "Opening School Mass", involved: "All", date: "4th September, 2026" },
+  { event: "Lower/Upper Gravity Educational Trip", involved: "Lower/Upper", date: "19th September, 2026", charges: "KSh 2,500" },
+  { event: "Mid Term Assessments", involved: "All", date: "21st – 25th September, 2026" },
+  { event: "Junior & Senior Gravity Educational Trip", involved: "Junior & Senior School", date: "26th September, 2026", charges: "KSh 2,500" },
+  { event: "End of Term Assessments", involved: "All", date: "16th – 22nd October, 2026" },
+  { event: "Prayer Day/Closing Day", involved: "All & PG – G5, G7, G8, G10", date: "23rd October, 2026" },
+  { event: "KPSEA Assessments", involved: "G6 Candidates", date: "26th – 29th October, 2026" },
+  { event: "KJSEA Assessments", involved: "G9 Candidates", date: "26th October – 5th November, 2026" },
+  { event: "Graduation Day (PP2, G3, G6, G9)", involved: "Concerned Learners/Staff/Parents", date: "7th November, 2026", charges: "KSh 3,000" },
+  { event: "Academic Clinic Day", involved: "Other Grades (apart from candidates)", date: "10th November, 2026" },
 ];
 
 const parentSections = [
@@ -86,18 +103,30 @@ function NewsPage() {
 
       <Section>
         <SectionHeading
-          title="Latest news and announcements"
-          description="This page publishes only current items. Past items move to the news archive."
+          title="Term III, 2026 school event schedule"
+          description="Key dates for the term, including assessments, trips and closing day."
         />
-        <div className="mx-auto max-w-3xl rounded-xl border border-dashed border-border bg-card p-8 text-center">
-          <CalendarDays aria-hidden="true" className="mx-auto mb-4 h-10 w-10 text-primary" />
-          <p className="text-base text-muted-foreground">
-            There are no current news items published yet. News, announcements and upcoming events
-            will appear here as soon as the Academy supplies them.
-          </p>
-          <p className="mt-4">
-            <Tbc>{TBC}</Tbc>
-          </p>
+        <div className="mx-auto max-w-4xl overflow-x-auto rounded-xl border border-border bg-card">
+          <table className="w-full min-w-[640px] text-left text-sm">
+            <thead>
+              <tr className="border-b border-border bg-muted">
+                <th scope="col" className="px-4 py-3 font-semibold text-foreground">Event</th>
+                <th scope="col" className="px-4 py-3 font-semibold text-foreground">Learners/Parents Involved</th>
+                <th scope="col" className="px-4 py-3 font-semibold text-foreground">Date</th>
+                <th scope="col" className="px-4 py-3 font-semibold text-foreground">Charges</th>
+              </tr>
+            </thead>
+            <tbody>
+              {termEvents.map((e) => (
+                <tr key={e.event} className="border-b border-border last:border-0">
+                  <td className="px-4 py-3 font-medium text-foreground">{e.event}</td>
+                  <td className="px-4 py-3 text-muted-foreground">{e.involved}</td>
+                  <td className="px-4 py-3 text-muted-foreground">{e.date}</td>
+                  <td className="px-4 py-3 text-muted-foreground">{e.charges ?? "—"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </Section>
 
