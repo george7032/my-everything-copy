@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import HomePage from "@/components/pages/HomePage";
+import ContactPage from "@/components/pages/ContactPage";
 import { school, SITE_URL } from "@/lib/school";
 
-const title = "School in Utawala | Embakasi Benedicta Academy";
+const title = "Contact Us — Embakasi Benedicta Academy, Utawala";
 const description =
-  "Embakasi Benedicta Academy is a private school in Utawala, Nairobi offering Kindergarten, Primary, Junior and Senior School education with day and boarding options.";
+  "Contact Embakasi Benedicta Academy in Utawala, next to Kimson Plaza. Call, email, message us on WhatsApp or book a school visit.";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title },
@@ -14,10 +14,10 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: SITE_URL },
+      { property: "og:url", content: `${SITE_URL}/contact` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: SITE_URL }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/contact` }],
     scripts: [
       {
         type: "application/ld+json",
@@ -25,7 +25,6 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "School",
           name: school.name,
-          description,
           url: SITE_URL,
           telephone: school.phone,
           email: school.email,
@@ -39,5 +38,5 @@ export const Route = createFileRoute("/")({
       },
     ],
   }),
-  component: HomePage,
+  component: ContactPage,
 });
