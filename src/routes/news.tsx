@@ -39,6 +39,23 @@ const categories = [
   "Photo Galleries",
 ];
 
+const termEvents = [
+  { event: "Resumption Term III 2026 — Boarders", involved: "Boarders", date: "24th August, 2026" },
+  { event: "Resumption Term III 2026 — Day Scholars", involved: "Day Scholars", date: "25th August, 2026" },
+  { event: "Entry Assessments", involved: "All", date: "26th – 31st August, 2026" },
+  { event: "G9 Selection of Pathways/Senior Schools", involved: "G9 Candidates & Parents", date: "24th August – 11th September, 2026" },
+  { event: "Opening School Mass", involved: "All", date: "4th September, 2026" },
+  { event: "Lower/Upper Gravity Educational Trip", involved: "Lower/Upper", date: "19th September, 2026", charges: "KSh 2,500" },
+  { event: "Mid Term Assessments", involved: "All", date: "21st – 25th September, 2026" },
+  { event: "Junior & Senior Gravity Educational Trip", involved: "Junior & Senior School", date: "26th September, 2026", charges: "KSh 2,500" },
+  { event: "End of Term Assessments", involved: "All", date: "16th – 22nd October, 2026" },
+  { event: "Prayer Day/Closing Day", involved: "All & PG – G5, G7, G8, G10", date: "23rd October, 2026" },
+  { event: "KPSEA Assessments", involved: "G6 Candidates", date: "26th – 29th October, 2026" },
+  { event: "KJSEA Assessments", involved: "G9 Candidates", date: "26th October – 5th November, 2026" },
+  { event: "Graduation Day (PP2, G3, G6, G9)", involved: "Concerned Learners/Staff/Parents", date: "7th November, 2026", charges: "KSh 3,000" },
+  { event: "Academic Clinic Day", involved: "Other Grades (apart from candidates)", date: "10th November, 2026" },
+];
+
 const parentSections = [
   { t: "School calendar", d: "Key dates for the academic year, including holidays and school events." },
   { t: "Term dates", d: "Opening and closing dates for each term." },
