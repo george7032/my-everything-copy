@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import AcademicPage from "@/components/site/AcademicPage";
+import AcademicPage, { type AcademicPageConfig } from "@/components/site/AcademicPage";
 import { SITE_URL } from "@/lib/school";
 import image from "@/assets/hero-6.jpeg";
 
-const title = "Senior School in Utawala — Embakasi Benedicta Academy";
+const title = "Senior School (Grades 10–12) — STEM & Social Sciences | Embakasi Benedicta Academy";
 const description =
-  "Senior School in Utawala focused on academic rigour, specialisation, career guidance and preparation for further study.";
+  "Senior School at Embakasi Benedicta Academy, Utawala: Grades 10–12 with two pathways — STEM and Social Sciences — where learners specialise according to their interests and aspirations.";
 
 export const Route = createFileRoute("/academics/senior")({
   head: () => ({
@@ -23,58 +23,78 @@ export const Route = createFileRoute("/academics/senior")({
   component: () => <AcademicPage config={config} />,
 });
 
-const config = {
+const config: AcademicPageConfig = {
   name: "Senior School",
   image,
   intro:
-    "A mature, future-focused stage preparing learners for further study and the world of work.",
+    "Grades 10 to 12 — learners begin specialising according to their interests, abilities and future aspirations.",
+  grades: "Grades 10 to 12",
+  curriculum: "Competency-based education",
   description: [
-    "Senior School learners work with greater independence and higher expectations. Teaching is rigorous, feedback is specific, and learners are supported to set and meet ambitious goals.",
-    "Alongside academic work, learners receive guidance on pathways, careers and the choices that will shape their next steps.",
+    "At Senior School, learners begin specialising according to their interests, abilities and future aspirations, supported by teachers who know them well.",
+    "Embakasi Benedicta Academy currently offers two pathways: STEM and Social Sciences.",
   ],
+  pathways: [
+    {
+      name: "STEM",
+      description:
+        "For learners drawn to science, technology, mathematics and technical problem-solving.",
+    },
+    {
+      name: "Social Sciences",
+      description:
+        "For learners drawn to languages, humanities, business and people-centred careers.",
+    },
+  ],
+  learningAreas: [],
   learningApproach: [
-    "Rigorous subject teaching with regular, specific feedback",
-    "Structured revision, examination technique and study discipline",
-    "Independent research and extended written work",
-    "Career guidance and pathway counselling",
-    "Leadership, mentorship and service within the school community",
-  ],
-  learningAreas: [
-    "Languages",
-    "Mathematics",
-    "Sciences",
-    "Humanities",
-    "Technical and applied subjects",
-    "Creative arts and sports",
+    "Specialised teaching within the learner's chosen pathway",
+    "Research, projects and presentations",
+    "Practical and laboratory work in the STEM pathway",
+    "Discussion, analysis and case study work in Social Sciences",
+    "Career guidance and preparation for further study",
   ],
   support: [
-    "One-to-one academic mentorship",
-    "Guidance and counselling",
-    "Careers and pathway advice",
-    "Progress reviews with learners and parents",
+    "Guidance on pathway and subject choices",
+    "Career and further-study counselling",
+    "Subject support and structured revision",
+    "Regular progress feedback to parents and learners",
   ],
-  facilities: ["Senior School classrooms", "Library and study spaces", "Sports grounds", "Campus grounds"],
-  coCurricular: ["Sports", "Debate and public speaking", "Leadership roles", "Competitions", "Community service"],
+  facilities: [
+    "Science laboratory",
+    "ICT laboratory",
+    "Library",
+    "Creative arts facilities",
+    "Sports facilities",
+    "Boarding facilities",
+  ],
+  coCurricular: [
+    "Sports",
+    "Debate and public speaking",
+    "STEM club",
+    "Leadership and mentorship",
+    "Community service",
+  ],
   faqs: [
     {
-      question: "Which Senior School pathways are offered?",
+      question: "Which pathways does the Academy offer?",
       answer:
-        "The pathways and subject combinations available are confirmed by the Academy office. Please contact admissions for current details before making decisions.",
+        "Embakasi Benedicta Academy currently offers two Senior School pathways: STEM and Social Sciences.",
     },
     {
-      question: "How are learners supported academically?",
+      question: "How is a pathway chosen?",
       answer:
-        "Through specific feedback, structured revision, mentorship and regular progress reviews with learners and parents.",
+        "Pathway selection begins in Grade 9 and is guided by the learner's performance, interests and aspirations, in consultation with parents and teachers.",
     },
     {
-      question: "Is career guidance provided?",
+      question: "Can a learner join Senior School from another school?",
       answer:
-        "Yes. Learners receive guidance on subject choices, pathways and careers as they plan their next steps.",
+        "Yes. Transfers are welcome subject to available places and a placement discussion with the admissions team.",
     },
     {
-      question: "Is boarding available for Senior School?",
+      question: "Is boarding available?",
       answer:
-        "Boarding availability by level is confirmed by the Academy. Please see the Boarding page and speak with admissions.",
+        "Boarding facilities support Senior School learners. Availability and requirements are confirmed by the Academy office.",
     },
   ],
 };

@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import AcademicPage from "@/components/site/AcademicPage";
+import AcademicPage, { type AcademicPageConfig } from "@/components/site/AcademicPage";
 import { SITE_URL } from "@/lib/school";
 import image from "@/assets/jss.jpeg";
 
-const title = "Junior School in Utawala — Embakasi Benedicta Academy";
+const title = "Junior School (Grades 7–9) in Utawala — Embakasi Benedicta Academy";
 const description =
-  "Junior School in Utawala where learners grow into independent thinkers through science, technology, projects and leadership.";
+  "Junior School at Embakasi Benedicta Academy, Utawala: Grades 7–9 learning areas, skills, laboratory and technical work, assessment and KJSEA preparation.";
 
 export const Route = createFileRoute("/academics/junior")({
   head: () => ({
@@ -23,60 +23,107 @@ export const Route = createFileRoute("/academics/junior")({
   component: () => <AcademicPage config={config} />,
 });
 
-const config = {
+const config: AcademicPageConfig = {
   name: "Junior School",
   image,
   intro:
-    "A stage of growing independence, deeper subject knowledge and real responsibility.",
+    "Grades 7 to 9 — learners grow into independent thinkers through science, technology, projects and leadership.",
+  grades: "Grades 7 to 9",
+  curriculum: "Competency-based education",
+  assessmentSummary:
+    "Continuous assessment, with the Kenya Junior School Education Assessment at the end of Grade 9",
   description: [
-    "Junior School learners take a significant step forward. They study subjects in greater depth, manage longer pieces of work and begin to take charge of their own learning.",
-    "Teachers combine strong subject teaching with guidance on study skills, organisation and personal responsibility, so that learners are ready for the demands of Senior School.",
-  ],
-  learningApproach: [
-    "Subject specialist teaching with clear learning objectives",
-    "Project work that develops research, planning and presentation",
-    "Practical science and technology activities",
-    "Study skills, revision technique and time management",
-    "Leadership opportunities and service within the school",
+    "Junior School is where learners begin to take charge of their own learning. Laboratory investigations, technical activities and research projects build confidence, discipline and curiosity.",
+    "Career guidance and talent identification run alongside academics, so that learners approach Grade 9 pathway selection with a clear sense of their strengths and interests.",
   ],
   learningAreas: [
     "English",
-    "Kiswahili",
+    "Kiswahili or Kenya Sign Language",
     "Mathematics",
-    "Integrated science",
-    "Social studies",
-    "Pre-technical and technical studies",
-    "Religious education",
-    "Creative arts and sports",
+    "Integrated Science",
+    "Social Studies",
+    "Pre-Technical Studies",
+    "Agriculture and Nutrition",
+    "Creative Arts and Sports",
+    "Religious Education",
+  ],
+  skills: [
+    "Critical thinking and problem-solving",
+    "Scientific investigation",
+    "Technical and practical skills",
+    "Digital literacy",
+    "Communication and presentation",
+    "Creativity",
+    "Leadership and teamwork",
+    "Career awareness",
+    "Responsible citizenship",
+  ],
+  learningApproach: [
+    "Laboratory investigations",
+    "Practical and technical activities",
+    "Research and projects",
+    "Group discussions",
+    "Problem-based learning",
+    "Digital learning",
+    "Presentations",
+    "Career guidance and talent identification",
+  ],
+  assessment: [
+    "Written assignments and tests",
+    "Practical assessments",
+    "Projects",
+    "Presentations",
+    "Portfolios",
+    "Teacher observation",
+    "Continuous assessment",
+    "Kenya Junior School Education Assessment at the end of Grade 9",
   ],
   support: [
-    "Academic mentorship and progress reviews",
-    "Guidance and counselling as learners move into adolescence",
-    "Subject support clinics where needed",
-    "Regular reporting and parent meetings",
+    "Career guidance and pathway selection support in Grade 9",
+    "Subject-specific help from teachers and revision sessions",
+    "Talent identification through clubs, sports and creative arts",
+    "Regular progress feedback to parents and learners",
   ],
-  facilities: ["Junior School classrooms", "Library", "Sports grounds", "Campus grounds"],
-  coCurricular: ["Sports teams", "Debate and public speaking", "Clubs and societies", "Competitions", "Educational trips"],
+  facilities: [
+    "Science laboratory",
+    "ICT laboratory",
+    "Pre-technical learning resources",
+    "Library",
+    "Agriculture learning area",
+    "Creative arts facilities",
+    "Sports facilities",
+    "Boarding facilities",
+  ],
+  coCurricular: [
+    "Sports",
+    "Creative arts",
+    "Debate and public speaking",
+    "STEM club",
+    "Environment club",
+    "Leadership",
+    "Journalism",
+    "Community service",
+  ],
   faqs: [
     {
-      question: "Which grades does Junior School cover?",
+      question: "How do learners choose a pathway?",
       answer:
-        "The grades within Junior School are confirmed by the Academy office. Please contact admissions for the current structure.",
+        "Grade 9 learners and their parents are guided through pathway and senior school selection by our teachers, drawing on the learner's performance, interests and strengths.",
     },
     {
-      question: "How do you prepare learners for Senior School?",
+      question: "Is there a national assessment?",
       answer:
-        "Through subject depth, study skills, independent project work, mentorship and clear guidance on the choices ahead.",
+        "Yes. Learners sit the Kenya Junior School Education Assessment at the end of Grade 9, alongside continuous school-based assessment.",
     },
     {
-      question: "Are there leadership opportunities?",
+      question: "What practical work is involved?",
       answer:
-        "Yes. Junior School learners take on responsibilities within the school and are encouraged to lead by example.",
+        "Learners carry out laboratory investigations, pre-technical activities, agriculture and nutrition practicals and research projects.",
     },
     {
-      question: "Is boarding available at this level?",
+      question: "Is boarding available for Junior School?",
       answer:
-        "Boarding availability by level is confirmed by the Academy. Please see the Boarding page and speak with admissions.",
+        "Boarding facilities support Junior School learners. Availability and requirements are confirmed by the Academy office.",
     },
   ],
 };
