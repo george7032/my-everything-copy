@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import AcademicPage from "@/components/site/AcademicPage";
+import AcademicPage, { type AcademicPageConfig } from "@/components/site/AcademicPage";
 import { SITE_URL } from "@/lib/school";
 import image from "@/assets/upper.jpeg";
 
-const title = "Primary School in Utawala — Embakasi Benedicta Academy";
+const title = "Primary School (Grades 1–6) in Utawala — Embakasi Benedicta Academy";
 const description =
-  "Primary education in Utawala with strong literacy and numeracy foundations, close learner support and character development.";
+  "Lower Primary (Grades 1–3) and Upper Primary (Grades 4–6) at Embakasi Benedicta Academy, Utawala: learning areas, skills, teaching approach, assessment and facilities.";
 
 export const Route = createFileRoute("/academics/primary")({
   head: () => ({
@@ -23,60 +23,126 @@ export const Route = createFileRoute("/academics/primary")({
   component: () => <AcademicPage config={config} />,
 });
 
-const config = {
+const config: AcademicPageConfig = {
   name: "Primary School",
   image,
   intro:
-    "Strong academic foundations, practical learning and character development for growing learners.",
+    "Lower Primary (Grades 1–3) and Upper Primary (Grades 4–6) — strong foundations, practical learning and character development.",
+  grades: "Grades 1 to 6",
+  curriculum: "Competency-based education",
+  assessmentSummary:
+    "Continuous competency-based assessment, with national assessment where applicable",
   description: [
-    "Our Primary School builds the foundations that everything else rests on: confident reading, sound numeracy, clear thinking and good habits of work.",
-    "Lessons are active and practical. Learners ask questions, work in groups, present their thinking and take increasing responsibility for their own progress. Teachers track each learner closely and step in early where support is needed.",
+    "In Lower Primary, learners build strong foundations in reading, writing and numeracy through activity-based, practical lessons that draw on the world around them.",
+    "In Upper Primary, learning deepens through inquiry, experiments, research and projects, with practical agriculture and nutrition activities and the use of technology in learning.",
+  ],
+  stages: [
+    {
+      name: "Lower Primary",
+      grades: "Grades 1 to 3",
+      learningAreas: [
+        "English Activities",
+        "Kiswahili Language Activities",
+        "Mathematical Activities",
+        "Environmental Activities",
+        "Creative Activities",
+        "Religious Education",
+      ],
+    },
+    {
+      name: "Upper Primary",
+      grades: "Grades 4 to 6",
+      learningAreas: [
+        "English",
+        "Kiswahili or Kenya Sign Language",
+        "Mathematics",
+        "Science and Technology",
+        "Agriculture and Nutrition",
+        "Social Studies",
+        "Creative Arts",
+        "Religious Education",
+      ],
+    },
+  ],
+  learningAreas: [],
+  skills: [
+    "Reading, writing and comprehension",
+    "Communication",
+    "Numeracy and mathematical reasoning",
+    "Problem-solving",
+    "Scientific inquiry",
+    "Creativity and innovation",
+    "Research and digital skills",
+    "Environmental responsibility",
+    "Collaboration and leadership",
+    "Practical life skills",
   ],
   learningApproach: [
-    "Daily reading and writing practice across the curriculum",
-    "Practical, enquiry-based lessons rather than rote learning",
-    "Continuous assessment used to guide teaching, not to label learners",
-    "Group work, presentation and discussion to build communication",
-    "Clear expectations for behaviour, effort and respect",
+    "Activity-based lessons and guided reading and writing",
+    "Use of practical learning materials",
+    "Pair and group work, with individual and group projects",
+    "Songs, stories and demonstrations",
+    "Experiments, demonstrations and inquiry-based learning",
+    "Research activities, presentations and discussions",
+    "Practical agriculture and nutrition activities",
+    "Integration of technology in learning",
   ],
-  learningAreas: [
-    "English and literacy",
-    "Kiswahili",
-    "Mathematics",
-    "Science and technology",
-    "Social studies",
-    "Religious education",
-    "Creative arts",
-    "Physical and health education",
+  assessment: [
+    "Oral questions and responses",
+    "Written exercises and assignments",
+    "Practical activities and tasks",
+    "Projects and presentations",
+    "Portfolios",
+    "Teacher observation",
+    "Continuous competency-based assessment",
+    "National assessment where applicable",
   ],
   support: [
-    "Early identification of learners who need extra help",
-    "Targeted reading and numeracy support",
-    "Remedial and enrichment sessions where appropriate",
-    "Pastoral care and mentorship for every learner",
+    "Close monitoring of literacy and numeracy progress",
+    "Extra help for learners who need to catch up",
+    "Talent identification through clubs and co-curricular activities",
+    "Regular feedback to parents on progress and next steps",
   ],
-  facilities: ["Primary classrooms", "Library", "Outdoor grounds", "Amusement park"],
-  coCurricular: ["Sports and games", "Clubs", "Music and drama", "Educational trips"],
+  facilities: [
+    "Classrooms",
+    "Reading areas or library",
+    "ICT resources or laboratory",
+    "Science learning resources",
+    "Agriculture learning area",
+    "Creative arts materials",
+    "Outdoor learning spaces and sports field",
+    "Boarding facilities",
+  ],
+  coCurricular: [
+    "Sports and soccer",
+    "Music, dance and drama",
+    "Art and creative arts",
+    "Debate and journalism",
+    "Environmental club",
+    "Scouts",
+    "Chess",
+    "Ballet",
+  ],
   faqs: [
     {
-      question: "Which grades does Primary School cover?",
+      question: "What is the difference between Lower and Upper Primary?",
       answer:
-        "The grades offered at each level are confirmed by the Academy office. Please contact admissions for the current structure.",
+        "Lower Primary (Grades 1–3) focuses on foundational literacy, numeracy and confidence. Upper Primary (Grades 4–6) introduces distinct subjects such as Science and Technology, Agriculture and Nutrition and Social Studies, with more research and project work.",
     },
     {
-      question: "How is learner progress assessed?",
+      question: "How are learners assessed?",
       answer:
-        "Teachers use continuous assessment throughout the term to guide teaching and to report progress to parents. The formal assessment arrangement is confirmed by the Academy.",
+        "Through continuous competency-based assessment: written work, practical tasks, projects, presentations, portfolios and teacher observation, plus national assessment where applicable.",
     },
     {
-      question: "What support is there for a learner who is struggling?",
+      question: "Are digital skills taught?",
       answer:
-        "Teachers identify difficulties early and provide targeted support, with regular communication to parents so that home and school work together.",
+        "Yes. Learners use ICT resources as part of their learning, building digital literacy alongside reading, writing and numeracy.",
     },
     {
       question: "Can primary learners board?",
       answer:
-        "Boarding availability by level is confirmed by the Academy. Please see the Boarding page and speak with admissions.",
+        "Boarding availability is confirmed by the Academy. Please see the Boarding page or contact the admissions office.",
     },
   ],
 };

@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import AcademicPage from "@/components/site/AcademicPage";
+import AcademicPage, { type AcademicPageConfig } from "@/components/site/AcademicPage";
 import { SITE_URL } from "@/lib/school";
 import image from "@/assets/kindergarten.jpeg";
 
-const title = "Kindergarten in Utawala — Embakasi Benedicta Academy";
+const title = "Kindergarten (PP1 & PP2) in Utawala — Embakasi Benedicta Academy";
 const description =
-  "A warm, play-rich kindergarten in Utawala where young learners build language, numeracy, confidence and social skills.";
+  "Kindergarten at Embakasi Benedicta Academy, Utawala: PP1 and PP2 learning areas, skills, teaching approach, assessment and facilities for our youngest learners.";
 
 export const Route = createFileRoute("/academics/kindergarten")({
   head: () => ({
@@ -23,31 +23,50 @@ export const Route = createFileRoute("/academics/kindergarten")({
   component: () => <AcademicPage config={config} />,
 });
 
-const config = {
+const config: AcademicPageConfig = {
   name: "Kindergarten",
   image,
   intro:
-    "A gentle, joyful first experience of school where young children feel safe, seen and excited to learn.",
+    "PP1 and PP2 — a gentle, joyful first experience of school where young children feel safe, seen and excited to learn.",
+  grades: "PP1 and PP2",
+  curriculum: "Competency-based education",
+  assessmentSummary: "Continuous, observation-based progress records and portfolios",
   description: [
     "Kindergarten at Embakasi Benedicta Academy is where the love of learning begins. Our youngest learners settle into routines, make friends and discover that school is a place where they belong.",
-    "Learning happens through play, songs, stories, movement and hands-on activity. Teachers observe each child closely and adjust their support so that no learner is rushed or left behind.",
-  ],
-  learningApproach: [
-    "Play-based, hands-on activities that suit how young children learn",
-    "Short, varied lessons with plenty of movement and rest",
-    "Daily story time and oral language work to build vocabulary",
-    "Small-group work so teachers can support each child individually",
-    "Gentle routines that build independence and confidence",
+    "Learning is delivered through guided play, songs, storytelling, educational games, art, movement, exploration and hands-on activities, with plenty of interaction between teachers and learners.",
   ],
   learningAreas: [
-    "Language and communication",
-    "Early literacy and reading readiness",
+    "Language Activities",
+    "Mathematical Activities",
+    "Environmental Activities",
+    "Psychomotor and Creative Activities",
+    "Religious Education Activities",
+  ],
+  skills: [
+    "Listening and speaking",
+    "Reading and writing readiness",
     "Early numeracy",
-    "Creative arts and craft",
-    "Music and movement",
-    "Environmental awareness",
-    "Psychomotor and physical play",
-    "Social and emotional development",
+    "Creativity and self-expression",
+    "Fine and gross motor coordination",
+    "Social and emotional skills",
+    "Personal hygiene and independence",
+    "Positive values and behaviour",
+  ],
+  learningApproach: [
+    "Guided play",
+    "Songs and storytelling",
+    "Educational games",
+    "Art and movement",
+    "Exploration and hands-on activities",
+    "Interaction with teachers and other learners",
+  ],
+  assessment: [
+    "Teacher observation",
+    "Oral activities",
+    "Practical tasks",
+    "Learner portfolios",
+    "Simple individual and group activities",
+    "Continuous progress records",
   ],
   support: [
     "Close teacher observation of every child's progress",
@@ -55,8 +74,21 @@ const config = {
     "Settling-in support for children new to school",
     "Regular feedback to parents on progress and next steps",
   ],
-  facilities: ["Kindergarten classrooms", "Outdoor play areas", "Kids amusement park", "Library reading corner"],
-  coCurricular: ["Music and movement", "Creative arts", "Outdoor play", "School celebrations"],
+  facilities: [
+    "Age-appropriate classrooms",
+    "Reading and activity corners",
+    "Outdoor play area",
+    "Learning manipulatives",
+    "Creative arts materials",
+    "Child-friendly washrooms",
+  ],
+  coCurricular: [
+    "Music and movement",
+    "Art and craft",
+    "Storytelling",
+    "Outdoor games",
+    "Educational trips",
+  ],
   faqs: [
     {
       question: "What age can my child start Kindergarten?",
@@ -64,9 +96,9 @@ const config = {
         "Entry ages and the grades offered are confirmed by the Academy office. Please contact admissions for the current arrangement.",
     },
     {
-      question: "How do you help a child settle in?",
+      question: "How is my child assessed at this age?",
       answer:
-        "New children are supported with predictable routines, a familiar teacher and gentle encouragement. We keep parents updated during the first weeks.",
+        "Through teacher observation, oral activities, practical tasks and portfolios kept over time — never through formal examinations.",
     },
     {
       question: "Is there time for play?",
