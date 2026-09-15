@@ -108,19 +108,62 @@ function AdmissionsPage() {
       <Section>
         <SectionHeading
           eyebrow="How to join"
-          title="The admissions journey"
-          description="Five straightforward steps, with our admissions team beside you at every stage."
+          title="Our admission process, step by step"
+          description="Six straightforward steps, with our admissions team beside you at every stage."
         />
         <ol className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {steps.map((s) => (
-            <li key={s.n} className="rounded-xl border border-border bg-card p-6">
+          {steps.map((s, i) => (
+            <li key={s.n} className="relative rounded-xl border border-border bg-card p-6">
+              <span
+                aria-hidden="true"
+                className="absolute right-5 top-5 text-3xl font-bold text-primary/15"
+              >
+                {i + 1}
+              </span>
               <p className="text-sm font-semibold uppercase tracking-wide text-primary">{s.n}</p>
               <h3 className="mt-2 text-lg font-bold text-foreground">{s.t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
             </li>
           ))}
         </ol>
+
+        <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-border bg-card p-6 text-center sm:p-8">
+          <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+            <FileText aria-hidden="true" className="h-6 w-6 text-primary" />
+          </span>
+          <h3 className="mt-4 text-xl font-bold text-foreground">
+            Download the application form
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Download the application form, complete it and submit it to the school email at{" "}
+            <a
+              href={`mailto:${school.email}`}
+              className="font-semibold text-primary underline-offset-4 hover:underline"
+            >
+              {school.email}
+            </a>{" "}
+            — or deliver it to the school office in Utawala.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <a
+              href="/documents/eba-application-form.pdf"
+              download
+              className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-dark"
+            >
+              <Download aria-hidden="true" className="h-4 w-4" />
+              Download application form (PDF)
+            </a>
+            <a
+              href={`mailto:${school.email}?subject=${encodeURIComponent("Learner application — Embakasi Benedicta Academy")}`}
+              className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+            >
+              <Mail aria-hidden="true" className="h-4 w-4" />
+              Email the completed form
+            </a>
+          </div>
+        </div>
       </Section>
+
 
       <Section muted>
         <div className="grid gap-10 lg:grid-cols-3">
