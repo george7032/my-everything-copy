@@ -1,16 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { FileText, Lock } from "lucide-react";
+import {
+  CalendarCheck,
+  Download,
+  FileText,
+  GraduationCap,
+  Bus,
+  ClipboardList,
+  Church,
+} from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/site/PageHero";
-import { Section, SectionHeading, Tbc } from "@/components/site/Section";
+import { Section, SectionHeading } from "@/components/site/Section";
 import Faq from "@/components/site/Faq";
 import { AdmissionsCta } from "@/components/site/CtaGroup";
-import { SITE_URL, TBC } from "@/lib/school";
+import { SITE_URL } from "@/lib/school";
 import heroImage from "@/assets/hero-9.jpeg";
 
-const title = "News, Events & Parent Information — Embakasi Benedicta Academy";
+const title = "News & Events — Term III 2026 Calendar | Embakasi Benedicta Academy";
 const description =
-  "School news, announcements, upcoming events and parent information — term dates, uniform, transport, notices and policies at Embakasi Benedicta Academy, Utawala.";
+  "School news, announcements and the Term III 2026 calendar of events at Embakasi Benedicta Academy, Utawala — opening dates, assessments, trips, ceremonies and downloads.";
 
 export const Route = createFileRoute("/news")({
   head: () => ({
@@ -28,6 +36,96 @@ export const Route = createFileRoute("/news")({
   component: NewsPage,
 });
 
+type Event = { event: string; involved: string; date: string; charges?: string };
+
+const groups: { id: string; title: string; blurb: string; icon: typeof CalendarCheck; events: Event[] }[] = [
+  {
+    id: "opening",
+    title: "Opening of term",
+    blurb: "Reporting dates for boarders and day scholars.",
+    icon: CalendarCheck,
+    events: [
+      { event: "Resumption — Boarders", involved: "Boarders", date: "24th August, 2026" },
+      { event: "Resumption — Day Scholars", involved: "Day Scholars", date: "25th August, 2026" },
+    ],
+  },
+  {
+    id: "assessments",
+    title: "Assessments",
+    blurb: "Entry, mid term and end of term assessments for all learners.",
+    icon: ClipboardList,
+    events: [
+      { event: "Entry Assessments", involved: "All", date: "26th – 31st August, 2026" },
+      { event: "Mid Term Assessments", involved: "All", date: "21st – 25th September, 2026" },
+      { event: "End of Term Assessments", involved: "All", date: "16th – 22nd October, 2026" },
+    ],
+  },
+  {
+    id: "national-assessments",
+    title: "National assessments & pathway selection",
+    blurb: "Dates for our Grade 6 and Grade 9 candidates.",
+    icon: GraduationCap,
+    events: [
+      {
+        event: "G9 Selection of Pathways / Senior Schools",
+        involved: "G9 Candidates & Parents",
+        date: "24th August – 11th September, 2026",
+      },
+      { event: "KPSEA Assessments", involved: "G6 Candidates", date: "26th – 29th October, 2026" },
+      {
+        event: "KJSEA Assessments",
+        involved: "G9 Candidates",
+        date: "26th October – 5th November, 2026",
+      },
+    ],
+  },
+  {
+    id: "trips",
+    title: "Educational trips",
+    blurb: "Gravity educational trips, with charges payable to the school office.",
+    icon: Bus,
+    events: [
+      {
+        event: "Lower / Upper Gravity Educational Trip",
+        involved: "Lower & Upper Primary",
+        date: "19th September, 2026",
+        charges: "KSh 2,500",
+      },
+      {
+        event: "Junior & Senior Gravity Educational Trip",
+        involved: "Junior & Senior School",
+        date: "26th September, 2026",
+        charges: "KSh 2,500",
+      },
+    ],
+  },
+  {
+    id: "ceremonies",
+    title: "Masses, ceremonies & closing",
+    blurb: "Whole-school gatherings, graduation and closing day.",
+    icon: Church,
+    events: [
+      { event: "Opening School Mass", involved: "All", date: "4th September, 2026" },
+      {
+        event: "Prayer Day / Closing Day",
+        involved: "All & PG – G5, G7, G8, G10",
+        date: "23rd October, 2026",
+      },
+      {
+        event: "Graduation Day (PP2, G3, G6, G9)",
+        involved: "Concerned Learners / Staff / Parents",
+        date: "7th November, 2026",
+        charges: "KSh 3,000",
+      },
+      {
+        event: "Academic Clinic Day",
+        involved: "Other grades (apart from candidates)",
+        date: "10th November, 2026",
+      },
+    ],
+  },
+];
+
 const categories = [
   "School News",
   "Announcements",
@@ -39,43 +137,27 @@ const categories = [
   "Photo Galleries",
 ];
 
-const termEvents = [
-  { event: "Resumption Term III 2026 — Boarders", involved: "Boarders", date: "24th August, 2026" },
-  { event: "Resumption Term III 2026 — Day Scholars", involved: "Day Scholars", date: "25th August, 2026" },
-  { event: "Entry Assessments", involved: "All", date: "26th – 31st August, 2026" },
-  { event: "G9 Selection of Pathways/Senior Schools", involved: "G9 Candidates & Parents", date: "24th August – 11th September, 2026" },
-  { event: "Opening School Mass", involved: "All", date: "4th September, 2026" },
-  { event: "Lower/Upper Gravity Educational Trip", involved: "Lower/Upper", date: "19th September, 2026", charges: "KSh 2,500" },
-  { event: "Mid Term Assessments", involved: "All", date: "21st – 25th September, 2026" },
-  { event: "Junior & Senior Gravity Educational Trip", involved: "Junior & Senior School", date: "26th September, 2026", charges: "KSh 2,500" },
-  { event: "End of Term Assessments", involved: "All", date: "16th – 22nd October, 2026" },
-  { event: "Prayer Day/Closing Day", involved: "All & PG – G5, G7, G8, G10", date: "23rd October, 2026" },
-  { event: "KPSEA Assessments", involved: "G6 Candidates", date: "26th – 29th October, 2026" },
-  { event: "KJSEA Assessments", involved: "G9 Candidates", date: "26th October – 5th November, 2026" },
-  { event: "Graduation Day (PP2, G3, G6, G9)", involved: "Concerned Learners/Staff/Parents", date: "7th November, 2026", charges: "KSh 3,000" },
-  { event: "Academic Clinic Day", involved: "Other Grades (apart from candidates)", date: "10th November, 2026" },
-];
-
-const parentSections = [
-  { t: "School calendar", d: "Key dates for the academic year, including holidays and school events." },
-  { t: "Term dates", d: "Opening and closing dates for each term." },
-  { t: "Uniform information", d: "Uniform requirements, suppliers and expectations." },
-  { t: "Transport information", d: "Transport arrangements, routes and pick-up points." },
-  { t: "Parent notices", d: "Current notices and communications from the Academy." },
-  { t: "Newsletters", d: "Termly newsletters covering school life and achievements." },
-  { t: "School policies", d: "Policies covering behaviour, attendance, safeguarding and more." },
+const documents = [
+  {
+    name: "Term III 2026 Newsletter",
+    category: "Newsletter",
+    date: "August 2026",
+    description:
+      "Our termly newsletter with the welcome message, key dates, assessments, trips, ceremonies and reminders for parents.",
+    href: "/documents/eba-newsletter-term-3-2026.pdf",
+  },
 ];
 
 const parentFaqs = [
   {
     question: "How does the Academy communicate with parents?",
     answer:
-      "Through notices, newsletters, parent meetings and direct contact from the school office. Parents may also call, email or message the Academy at any time.",
+      "Through notices, the termly newsletter, parent meetings and direct contact from the school office. Parents may also call, email or message the Academy at any time.",
   },
   {
-    question: "Where can I find term dates?",
+    question: "Are the trip charges compulsory?",
     answer:
-      "Term dates are published on this page as soon as they are confirmed by the Academy for the current academic year.",
+      "Educational trips carry the charges shown above and are paid through the school office. Please speak to the office if you need to discuss payment.",
   },
   {
     question: "Who do I contact about my child's progress?",
@@ -89,13 +171,45 @@ const parentFaqs = [
   },
 ];
 
+function EventTable({ events }: { events: Event[] }) {
+  const showCharges = events.some((e) => e.charges);
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full min-w-[520px] text-left text-sm">
+        <thead>
+          <tr className="border-b border-border">
+            <th scope="col" className="px-4 py-3 font-semibold text-foreground">Event</th>
+            <th scope="col" className="px-4 py-3 font-semibold text-foreground">Who is involved</th>
+            <th scope="col" className="px-4 py-3 font-semibold text-foreground">Date</th>
+            {showCharges && (
+              <th scope="col" className="px-4 py-3 font-semibold text-foreground">Charges</th>
+            )}
+          </tr>
+        </thead>
+        <tbody>
+          {events.map((e) => (
+            <tr key={e.event} className="border-b border-border last:border-0">
+              <td className="px-4 py-3 font-medium text-foreground">{e.event}</td>
+              <td className="px-4 py-3 text-muted-foreground">{e.involved}</td>
+              <td className="px-4 py-3 text-muted-foreground">{e.date}</td>
+              {showCharges && (
+                <td className="px-4 py-3 text-muted-foreground">{e.charges ?? "—"}</td>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function NewsPage() {
   return (
     <Layout>
       <PageHero
         eyebrow="Community"
         title="News and events"
-        description="Current news, announcements and upcoming events from the Academy."
+        description="Current news, announcements and the Term III 2026 calendar of events at the Academy."
         image={heroImage}
         imageAlt="A school event at Embakasi Benedicta Academy"
         crumbs={[{ name: "News & Events" }]}
@@ -103,37 +217,68 @@ function NewsPage() {
 
       <Section>
         <SectionHeading
-          title="Term III, 2026 school event schedule"
-          description="Key dates for the term, including assessments, trips and closing day."
+          eyebrow="Calendar"
+          title="Term III, 2026 calendar of events"
+          description="Grouped by type so you can find the dates that matter to your child at a glance."
         />
-        <div className="mx-auto max-w-4xl overflow-x-auto rounded-xl border border-border bg-card">
-          <table className="w-full min-w-[640px] text-left text-sm">
-            <thead>
-              <tr className="border-b border-border bg-muted">
-                <th scope="col" className="px-4 py-3 font-semibold text-foreground">Event</th>
-                <th scope="col" className="px-4 py-3 font-semibold text-foreground">Learners/Parents Involved</th>
-                <th scope="col" className="px-4 py-3 font-semibold text-foreground">Date</th>
-                <th scope="col" className="px-4 py-3 font-semibold text-foreground">Charges</th>
-              </tr>
-            </thead>
-            <tbody>
-              {termEvents.map((e) => (
-                <tr key={e.event} className="border-b border-border last:border-0">
-                  <td className="px-4 py-3 font-medium text-foreground">{e.event}</td>
-                  <td className="px-4 py-3 text-muted-foreground">{e.involved}</td>
-                  <td className="px-4 py-3 text-muted-foreground">{e.date}</td>
-                  <td className="px-4 py-3 text-muted-foreground">{e.charges ?? "—"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="mx-auto max-w-5xl space-y-8">
+          {groups.map((g) => (
+            <section
+              key={g.id}
+              id={g.id}
+              aria-labelledby={`${g.id}-title`}
+              className="overflow-hidden rounded-2xl border border-border bg-card scroll-mt-24"
+            >
+              <div className="flex items-start gap-4 border-b border-border bg-muted p-5 sm:p-6">
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                  <g.icon aria-hidden="true" className="h-5 w-5 text-primary" />
+                </span>
+                <div>
+                  <h3 id={`${g.id}-title`} className="text-lg font-bold text-foreground sm:text-xl">
+                    {g.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{g.blurb}</p>
+                </div>
+              </div>
+              <EventTable events={g.events} />
+            </section>
+          ))}
         </div>
       </Section>
 
       <Section muted>
         <SectionHeading
-          title="Categories"
-          description="Every item published carries a title, date, category, featured image and, where relevant, an event date and photo gallery."
+          title="Downloads"
+          description="School documents you can download and keep."
+        />
+        <div className="mx-auto grid max-w-4xl gap-6 sm:grid-cols-2">
+          {documents.map((d) => (
+            <article key={d.name} className="rounded-2xl border border-border bg-card p-6">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10">
+                <FileText aria-hidden="true" className="h-5 w-5 text-primary" />
+              </span>
+              <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-primary">
+                {d.category} · {d.date}
+              </p>
+              <h3 className="mt-1 text-lg font-bold text-foreground">{d.name}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{d.description}</p>
+              <a
+                href={d.href}
+                download
+                className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-dark"
+              >
+                <Download aria-hidden="true" className="h-4 w-4" />
+                Download newsletter (PDF)
+              </a>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeading
+          title="What we publish"
+          description="Every item we publish carries a title, date, category, featured image and, where relevant, an event date and photo gallery."
         />
         <ul className="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
           {categories.map((c) => (
@@ -147,71 +292,14 @@ function NewsPage() {
         </ul>
       </Section>
 
-      <Section>
-        <SectionHeading
-          title="News archive"
-          description="Previous school news and past events are kept in the archive so that the homepage always shows what is current."
-        />
-        <div className="mx-auto max-w-3xl rounded-xl border border-dashed border-border bg-card p-8 text-center">
-          <p className="text-base text-muted-foreground">The archive is currently empty.</p>
-          <p className="mt-4">
-            <Tbc>{TBC}</Tbc>
-          </p>
-        </div>
-      </Section>
-
-      <Section muted ariaLabel="Parent information">
-        <SectionHeading
-          eyebrow="For Parents"
-          title="Parent information"
-          description="Dates, notices, uniform and transport details and school policies, published as soon as the Academy confirms them."
-        />
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {parentSections.map((s) => (
-            <div key={s.t} className="rounded-xl border border-border bg-card p-6">
-              <h3 className="text-lg font-semibold text-foreground">{s.t}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{s.d}</p>
-              <p className="mt-4">
-                <Tbc>{TBC}</Tbc>
-              </p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section>
-        <SectionHeading
-          title="Downloadable documents"
-          description="Forms, calendars and policy documents will be listed here with a title, category, date, description and download button."
-        />
-        <div className="mx-auto max-w-3xl rounded-xl border border-dashed border-border bg-card p-8 text-center">
-          <FileText aria-hidden="true" className="mx-auto mb-4 h-10 w-10 text-primary" />
-          <p className="text-base text-muted-foreground">No documents have been published yet.</p>
-          <p className="mt-4">
-            <Tbc>{TBC}</Tbc>
-          </p>
-        </div>
-      </Section>
-
       <Section muted>
-        <div className="mx-auto max-w-3xl rounded-xl border border-border bg-card p-8 text-center">
-          <Lock aria-hidden="true" className="mx-auto mb-4 h-10 w-10 text-primary" />
-          <h2 className="text-xl font-bold text-foreground">Parent portal</h2>
-          <p className="mt-2 text-sm text-muted-foreground">
-            A secure parent portal for progress reports and school documents is planned. Access will
-            be given only to registered parents once the Academy confirms the arrangement.
-          </p>
-          <p className="mt-4">
-            <Tbc>{TBC}</Tbc>
-          </p>
-        </div>
-      </Section>
-
-      <Section>
         <Faq items={parentFaqs} title="Parent questions" />
       </Section>
 
-      <AdmissionsCta title="Want to be part of our community?" description="Enquire today or book a visit to the Academy." />
+      <AdmissionsCta
+        title="Want to be part of our community?"
+        description="Enquire today or book a visit to the Academy."
+      />
     </Layout>
   );
 }
