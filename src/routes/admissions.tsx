@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Download, FileText, Mail } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/site/PageHero";
 import { Section, SectionHeading, Tbc } from "@/components/site/Section";
@@ -33,28 +34,33 @@ export const Route = createFileRoute("/admissions")({
 const steps = [
   {
     n: "Step 1",
-    t: "Make an enquiry",
-    d: "Send us the enquiry form below, call or message us on WhatsApp. Our admissions team will respond with the information you need.",
+    t: "Make an enquiry or book a school visit",
+    d: "Our admission process begins with an enquiry or a school visit. Send the enquiry form below, call the school or message us on WhatsApp, and we will arrange a convenient time for you to come and see the Academy.",
   },
   {
     n: "Step 2",
-    t: "Book a school visit",
-    d: "Come and see the Academy for yourself. Meet the teachers, walk through the classrooms and ask every question you have.",
+    t: "Meet the admissions team",
+    d: "Parents meet with our admissions team to discuss the learner's needs, preferred pathway, subject options, and whether your child will join as a day scholar or a boarder.",
   },
   {
     n: "Step 3",
-    t: "Submit an application",
-    d: "Complete the application form and provide the required documents for your child's level.",
+    t: "Complete the application form",
+    d: "Fill in the application form at the school office, or download the form below, complete it and send it to the school email.",
   },
   {
     n: "Step 4",
-    t: "Placement assessment",
-    d: "Learners sit a short placement assessment so that we can place them at the right level and plan the support they need.",
+    t: "Submit the required documents",
+    d: "Attach the learner's birth certificate, the most recent school report where applicable, a parent or guardian identification document and passport-size photographs.",
   },
   {
     n: "Step 5",
-    t: "Enrolment",
-    d: "Once a place is offered and accepted, we complete enrolment and welcome your family to the Academy.",
+    t: "Application review and placement",
+    d: "The admissions team reviews the application and confirms the learner's placement, including a short placement assessment where it is needed.",
+  },
+  {
+    n: "Step 6",
+    t: "Fees, reporting and enrolment",
+    d: "Once placement is confirmed, you receive guidance on fees, reporting requirements and enrolment — and we welcome your family to the Academy.",
   },
 ];
 
@@ -103,19 +109,62 @@ function AdmissionsPage() {
       <Section>
         <SectionHeading
           eyebrow="How to join"
-          title="The admissions journey"
-          description="Five straightforward steps, with our admissions team beside you at every stage."
+          title="Our admission process, step by step"
+          description="Six straightforward steps, with our admissions team beside you at every stage."
         />
         <ol className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {steps.map((s) => (
-            <li key={s.n} className="rounded-xl border border-border bg-card p-6">
+          {steps.map((s, i) => (
+            <li key={s.n} className="relative rounded-xl border border-border bg-card p-6">
+              <span
+                aria-hidden="true"
+                className="absolute right-5 top-5 text-3xl font-bold text-primary/15"
+              >
+                {i + 1}
+              </span>
               <p className="text-sm font-semibold uppercase tracking-wide text-primary">{s.n}</p>
               <h3 className="mt-2 text-lg font-bold text-foreground">{s.t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
             </li>
           ))}
         </ol>
+
+        <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-border bg-card p-6 text-center sm:p-8">
+          <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+            <FileText aria-hidden="true" className="h-6 w-6 text-primary" />
+          </span>
+          <h3 className="mt-4 text-xl font-bold text-foreground">
+            Download the application form
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Download the application form, complete it and submit it to the school email at{" "}
+            <a
+              href={`mailto:${school.email}`}
+              className="font-semibold text-primary underline-offset-4 hover:underline"
+            >
+              {school.email}
+            </a>{" "}
+            — or deliver it to the school office in Utawala.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <a
+              href="/documents/eba-application-form.pdf"
+              download
+              className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-dark"
+            >
+              <Download aria-hidden="true" className="h-4 w-4" />
+              Download application form (PDF)
+            </a>
+            <a
+              href={`mailto:${school.email}?subject=${encodeURIComponent("Learner application — Embakasi Benedicta Academy")}`}
+              className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+            >
+              <Mail aria-hidden="true" className="h-4 w-4" />
+              Email the completed form
+            </a>
+          </div>
+        </div>
       </Section>
+
 
       <Section muted>
         <div className="grid gap-10 lg:grid-cols-3">
