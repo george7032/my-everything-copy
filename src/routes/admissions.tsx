@@ -33,28 +33,33 @@ export const Route = createFileRoute("/admissions")({
 const steps = [
   {
     n: "Step 1",
-    t: "Make an enquiry",
-    d: "Send us the enquiry form below, call or message us on WhatsApp. Our admissions team will respond with the information you need.",
+    t: "Make an enquiry or book a school visit",
+    d: "Our admission process begins with an enquiry or a school visit. Send the enquiry form below, call the school or message us on WhatsApp, and we will arrange a convenient time for you to come and see the Academy.",
   },
   {
     n: "Step 2",
-    t: "Book a school visit",
-    d: "Come and see the Academy for yourself. Meet the teachers, walk through the classrooms and ask every question you have.",
+    t: "Meet the admissions team",
+    d: "Parents meet with our admissions team to discuss the learner's needs, preferred pathway, subject options, and whether your child will join as a day scholar or a boarder.",
   },
   {
     n: "Step 3",
-    t: "Submit an application",
-    d: "Complete the application form and provide the required documents for your child's level.",
+    t: "Complete the application form",
+    d: "Fill in the application form at the school office, or download the form below, complete it and send it to the school email.",
   },
   {
     n: "Step 4",
-    t: "Placement assessment",
-    d: "Learners sit a short placement assessment so that we can place them at the right level and plan the support they need.",
+    t: "Submit the required documents",
+    d: "Attach the learner's birth certificate, the most recent school report where applicable, a parent or guardian identification document and passport-size photographs.",
   },
   {
     n: "Step 5",
-    t: "Enrolment",
-    d: "Once a place is offered and accepted, we complete enrolment and welcome your family to the Academy.",
+    t: "Application review and placement",
+    d: "The admissions team reviews the application and confirms the learner's placement, including a short placement assessment where it is needed.",
+  },
+  {
+    n: "Step 6",
+    t: "Fees, reporting and enrolment",
+    d: "Once placement is confirmed, you receive guidance on fees, reporting requirements and enrolment — and we welcome your family to the Academy.",
   },
 ];
 
