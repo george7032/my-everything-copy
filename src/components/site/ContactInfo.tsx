@@ -1,6 +1,5 @@
-import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
-import { school, TBC, whatsappLink } from "@/lib/school";
-import { Tbc } from "./Section";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { school, whatsappLink } from "@/lib/school";
 
 export default function ContactInfo({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const label = tone === "light" ? "text-white/70" : "text-muted-foreground";
@@ -14,9 +13,6 @@ export default function ContactInfo({ tone = "dark" }: { tone?: "dark" | "light"
         <div>
           <p className={`text-xs font-semibold uppercase tracking-wide ${label}`}>Address</p>
           <p className={`text-sm ${value}`}>{school.address}</p>
-          <p className={`mt-1 text-sm ${label}`}>
-            Postal address: <Tbc>{TBC}</Tbc>
-          </p>
         </div>
       </li>
       <li className="flex gap-3">
@@ -52,15 +48,6 @@ export default function ContactInfo({ tone = "dark" }: { tone?: "dark" | "light"
           >
             {school.email}
           </a>
-        </div>
-      </li>
-      <li className="flex gap-3">
-        <Clock aria-hidden="true" className={`mt-0.5 h-5 w-5 shrink-0 ${icon}`} />
-        <div>
-          <p className={`text-xs font-semibold uppercase tracking-wide ${label}`}>Operating hours</p>
-          <p className="text-sm">
-            <Tbc>{TBC}</Tbc>
-          </p>
         </div>
       </li>
     </ul>

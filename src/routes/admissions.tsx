@@ -2,13 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Download, FileText, Mail } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/site/PageHero";
-import { Section, SectionHeading, Tbc } from "@/components/site/Section";
+import { Section, SectionHeading } from "@/components/site/Section";
 import { CtaGroup } from "@/components/site/CtaGroup";
 import Faq from "@/components/site/Faq";
 import EnquiryForm from "@/components/site/forms/EnquiryForm";
 import VisitForm from "@/components/site/forms/VisitForm";
 import ContactInfo from "@/components/site/ContactInfo";
-import { school, SITE_URL, TBC } from "@/lib/school";
+import { school, SITE_URL } from "@/lib/school";
 import heroImage from "@/assets/upper.jpeg";
 
 const title = "Admissions — Embakasi Benedicta Academy, Utawala";
@@ -173,9 +173,6 @@ function AdmissionsPage() {
             <p className="mt-3 text-sm text-muted-foreground">
               Entry requirements for each level are set by the Academy.
             </p>
-            <p className="mt-3">
-              <Tbc>{TBC}</Tbc>
-            </p>
           </div>
           <div>
             <h2 className="text-xl font-bold text-foreground">Required documents</h2>
@@ -185,17 +182,11 @@ function AdmissionsPage() {
               <li>Parent or guardian identification document</li>
               <li>Passport-size photographs</li>
             </ul>
-            <p className="mt-3 text-xs text-muted-foreground">
-              The final list is confirmed by the admissions office: <Tbc>{TBC}</Tbc>
-            </p>
           </div>
           <div>
             <h2 className="text-xl font-bold text-foreground">Fees and prospectus</h2>
             <p className="mt-3 text-sm text-muted-foreground">
               Fee structures and the school prospectus are issued on request by the Academy office.
-            </p>
-            <p className="mt-3">
-              <Tbc>{TBC}</Tbc>
             </p>
           </div>
         </div>

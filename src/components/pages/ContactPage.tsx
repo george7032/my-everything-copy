@@ -2,12 +2,12 @@ import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/site/PageHero";
-import { Section, SectionHeading, Tbc } from "@/components/site/Section";
+import { Section, SectionHeading } from "@/components/site/Section";
 import { CtaGroup } from "@/components/site/CtaGroup";
 import ContactInfo from "@/components/site/ContactInfo";
 import VisitForm from "@/components/site/forms/VisitForm";
 import { TextAreaField, TextField } from "@/components/site/forms/Field";
-import { school, TBC } from "@/lib/school";
+import { school } from "@/lib/school";
 import heroImage from "@/assets/hero-7.jpeg";
 
 const phoneOk = (v: string) => /^[+()\d\s-]{9,20}$/.test(v.trim());
@@ -82,10 +82,7 @@ export default function ContactPage() {
             <ContactInfo />
             <div className="mt-8 rounded-xl border border-border bg-card p-6">
               <h3 className="font-semibold text-foreground">Find us on the map</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {school.address}. The exact map location will be added once the Academy confirms its
-                Google Maps listing: <Tbc>{TBC}</Tbc>
-              </p>
+              <p className="mt-2 text-sm text-muted-foreground">{school.address}.</p>
             </div>
           </div>
           <div>
