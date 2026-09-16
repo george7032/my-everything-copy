@@ -1,9 +1,9 @@
 import Layout from "@/components/Layout";
 import { Eye, Heart, Target } from "lucide-react";
 import PageHero from "@/components/site/PageHero";
-import { Section, SectionHeading, Tbc } from "@/components/site/Section";
+import { Section, SectionHeading } from "@/components/site/Section";
 import { AdmissionsCta } from "@/components/site/CtaGroup";
-import { TBC } from "@/lib/school";
+
 import kimImage from "@/assets/kim.jpeg";
 import catherineImage from "@/assets/catherine.jpeg";
 import ndegwaImage from "@/assets/ndegwa.jpeg";
@@ -51,12 +51,6 @@ const leadership = [
 const facts = [
   { label: "Official school name", value: "Embakasi Benedicta Academy" },
   { label: "Location", value: "Utawala, next to Kimson Plaza, Nairobi" },
-  { label: "Year established", value: TBC },
-  { label: "Levels offered", value: TBC },
-  { label: "Curriculum", value: TBC },
-  { label: "Day and boarding options", value: TBC },
-  { label: "Number of learners", value: TBC },
-  { label: "Number of teachers", value: TBC },
 ];
 
 export default function AboutPage() {
@@ -109,7 +103,7 @@ export default function AboutPage() {
       <Section>
         <SectionHeading
           title="School facts"
-          description="We publish only what the Academy has confirmed. Items marked below are awaiting confirmation."
+          description="We publish only what the Academy has confirmed."
         />
         <dl className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-2">
           {facts.map((f) => (
@@ -119,7 +113,7 @@ export default function AboutPage() {
             >
               <dt className="text-sm font-medium text-foreground">{f.label}</dt>
               <dd className="text-right text-sm text-muted-foreground">
-                {f.value === TBC ? <Tbc>{TBC}</Tbc> : f.value}
+                {f.value}
               </dd>
             </div>
           ))}
