@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/site/PageHero";
-import { Section, Tbc } from "@/components/site/Section";
-import { LEGAL_TBC, school, SITE_URL } from "@/lib/school";
+import { Section } from "@/components/site/Section";
+import { school, SITE_URL } from "@/lib/school";
 
 const title = "Terms of Use — Embakasi Benedicta Academy";
 const description =
@@ -74,9 +74,6 @@ function TermsPage() {
               .
             </p>
           </div>
-          <p className="rounded-lg border border-dashed border-primary/40 bg-primary/5 p-4 text-sm text-muted-foreground">
-            These terms are a working draft prepared for the Academy's review. <Tbc>{LEGAL_TBC}</Tbc>
-          </p>
         </div>
       </Section>
     </Layout>

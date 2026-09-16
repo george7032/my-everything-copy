@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Clock, Facebook, Mail, MapPin, MessageCircle, Music2, Phone, Youtube } from "lucide-react";
+import { Facebook, Mail, MapPin, MessageCircle, Music2, Phone, Youtube } from "lucide-react";
+
 import logoImage from "@/assets/logo.png";
 import { academicLevels, school, socialLinks, TBC, whatsappLink } from "@/lib/school";
 
@@ -129,10 +130,6 @@ export default function Footer() {
                 <a href={`mailto:${school.email}`} className="break-all hover:underline">
                   {school.email}
                 </a>
-              </li>
-              <li className="flex gap-2">
-                <Clock aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
-                <span className="text-white/70">Operating hours: {TBC}</span>
               </li>
             </ul>
           </div>

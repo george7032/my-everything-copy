@@ -1,14 +1,9 @@
 /**
  * Single source of truth for school information used across the site.
  *
- * IMPORTANT: Anything not verified by the Academy must use the TBC marker
- * rather than an invented value.
+ * IMPORTANT: Anything not verified by the Academy must not be published —
+ * leave it out rather than inventing a value.
  */
-
-export const TBC = "[MANAGEMENT TO CONFIRM]";
-export const TESTIMONIAL_TBC = "[APPROVED PARENT TESTIMONIAL TO BE ADDED]";
-export const ACHIEVEMENT_TBC = "[VERIFIED ACHIEVEMENT TO BE ADDED]";
-export const LEGAL_TBC = "[MANAGEMENT/LEGAL REVIEW REQUIRED]";
 
 export const school = {
   name: "Embakasi Benedicta Academy",
@@ -16,16 +11,11 @@ export const school = {
   tagline: "A nurturing space for young minds",
   /** Verified location as supplied by the Academy. */
   address: "Utawala, next to Kimson Plaza, Nairobi, Kenya",
-  postalAddress: TBC,
   /** Existing published contact details carried over from the Academy's own site. */
   phone: "+254 110 380 560",
   phoneHref: "tel:+254110380560",
   whatsapp: "254110380560",
   email: "marketingebenedictaacademy@gmail.com",
-  openingHours: TBC,
-  yearEstablished: TBC,
-  curriculum: TBC,
-  mapsEmbed: TBC,
 } as const;
 
 export const whatsappMessage =
