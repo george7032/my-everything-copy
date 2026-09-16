@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/site/PageHero";
-import { Section, SectionHeading, Tbc } from "@/components/site/Section";
+import { Section, SectionHeading } from "@/components/site/Section";
 import { CtaGroup, AdmissionsCta } from "@/components/site/CtaGroup";
 import Faq, { type FaqItem } from "@/components/site/Faq";
-import { TBC } from "@/lib/school";
+
 
 export type AcademicStage = {
   name: string;
@@ -17,7 +17,7 @@ export type AcademicPageConfig = {
   image: string;
   intro: string;
   description: string[];
-  /** "At a glance" values — leave undefined to show the TBC marker. */
+  /** Optional "At a glance" values — omitted values are simply not shown. */
   grades?: string;
   curriculum?: string;
   assessmentSummary?: string;
@@ -191,30 +191,19 @@ export default function AcademicPage({ config }: { config: AcademicPageConfig })
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="text-lg font-bold text-foreground">At a glance</h3>
               <dl className="mt-4 space-y-4 text-sm">
-                <div>
-                  <dt className="font-medium text-foreground">Grades offered</dt>
-                  <dd className="mt-1 text-muted-foreground">
-                    {config.grades ?? <Tbc>{TBC}</Tbc>}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-medium text-foreground">Curriculum</dt>
-                  <dd className="mt-1 text-muted-foreground">
-                    {config.curriculum ?? <Tbc>{TBC}</Tbc>}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-medium text-foreground">Assessment</dt>
-                  <dd className="mt-1 text-muted-foreground">
-                    {config.assessmentSummary ?? <Tbc>{TBC}</Tbc>}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-medium text-foreground">Day or boarding</dt>
-                  <dd className="mt-1 text-muted-foreground">
-                    {config.dayOrBoarding ?? <Tbc>{TBC}</Tbc>}
-                  </dd>
-                </div>
+                {[
+                  { label: "Grades offered", value: config.grades },
+                  { label: "Curriculum", value: config.curriculum },
+                  { label: "Assessment", value: config.assessmentSummary },
+                  { label: "Day or boarding", value: config.dayOrBoarding },
+                ]
+                  .filter((row) => row.value)
+                  .map((row) => (
+                    <div key={row.label}>
+                      <dt className="font-medium text-foreground">{row.label}</dt>
+                      <dd className="mt-1 text-muted-foreground">{row.value}</dd>
+                    </div>
+                  ))}
               </dl>
             </div>
 

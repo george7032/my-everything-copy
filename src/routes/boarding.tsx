@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/site/PageHero";
-import { Section, SectionHeading, Tbc } from "@/components/site/Section";
+import { Section, SectionHeading } from "@/components/site/Section";
 import { CtaGroup, AdmissionsCta } from "@/components/site/CtaGroup";
 import Faq from "@/components/site/Faq";
-import { SITE_URL, TBC } from "@/lib/school";
+import { SITE_URL } from "@/lib/school";
 import heroImage from "@/assets/hero-6.jpeg";
 
 const title = "Boarding — Embakasi Benedicta Academy, Utawala";
@@ -27,19 +27,6 @@ export const Route = createFileRoute("/boarding")({
   component: BoardingPage,
 });
 
-const toConfirm = [
-  "Who can board (levels and eligibility)",
-  "Accommodation and dormitory arrangements",
-  "Resident staff and supervision ratios",
-  "Security arrangements",
-  "Meals and dining",
-  "Healthcare and sick bay",
-  "Daily routine and timetable",
-  "Evening preparation and study time",
-  "Weekend activities and recreation",
-  "Boarding requirements and items to bring",
-  "Boarding fees",
-];
 
 const commitments = [
   { t: "Supervision", d: "Boarders are supervised by staff throughout the school day and in the evenings." },
@@ -102,20 +89,6 @@ function BoardingPage() {
         </div>
       </Section>
 
-      <Section muted>
-        <SectionHeading
-          title="Boarding details to be confirmed"
-          description="We publish boarding information only once the Academy has confirmed it. The items below are pending confirmation."
-        />
-        <ul className="mx-auto grid max-w-3xl gap-3 sm:grid-cols-2">
-          {toConfirm.map((f) => (
-            <li key={f} className="flex items-center justify-between gap-3 rounded-lg border border-border bg-card px-4 py-3">
-              <span className="text-sm font-medium text-foreground">{f}</span>
-              <Tbc>{TBC}</Tbc>
-            </li>
-          ))}
-        </ul>
-      </Section>
 
       <Section>
         <Faq items={faqs} title="Boarding questions" />

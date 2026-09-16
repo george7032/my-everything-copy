@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/site/PageHero";
-import { Section, Tbc } from "@/components/site/Section";
+import { Section } from "@/components/site/Section";
 import ContactInfo from "@/components/site/ContactInfo";
-import { SITE_URL, TBC } from "@/lib/school";
+import { SITE_URL } from "@/lib/school";
 
 const title = "Child Safeguarding — Embakasi Benedicta Academy";
 const description =
@@ -88,7 +88,7 @@ function SafeguardingPage() {
           <div className="rounded-xl border border-border bg-card p-6">
             <h2 className="text-xl font-bold text-foreground">Safeguarding contact</h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              The named safeguarding lead for the Academy: <Tbc>{TBC}</Tbc>
+              Safeguarding concerns may be reported directly to the school office.
             </p>
             <div className="mt-6">
               <ContactInfo />

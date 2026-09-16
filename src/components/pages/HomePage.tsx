@@ -9,22 +9,15 @@ import {
   GraduationCap,
   HeartHandshake,
   Home as HomeIcon,
-  Quote,
   ShieldCheck,
   Sparkles,
-  Trophy,
   Users,
 } from "lucide-react";
 import Layout from "@/components/Layout";
-import { Section, SectionHeading, Tbc } from "@/components/site/Section";
+import { Section, SectionHeading } from "@/components/site/Section";
 import { CtaGroup, AdmissionsCta } from "@/components/site/CtaGroup";
 import ContactInfo from "@/components/site/ContactInfo";
-import {
-  academicLevels,
-  ACHIEVEMENT_TBC,
-  TESTIMONIAL_TBC,
-  TBC,
-} from "@/lib/school";
+import { academicLevels } from "@/lib/school";
 import hero6 from "@/assets/hero-6.jpeg";
 import hero7 from "@/assets/hero-7.jpeg";
 import hero8 from "@/assets/hero-8.jpeg";
@@ -60,7 +53,7 @@ const reasons = [
   { icon: Users, t: "Co-curricular life", d: "Sport, clubs, music and the arts so that every learner finds their strength." },
 ];
 
-const testimonials = [TESTIMONIAL_TBC, TESTIMONIAL_TBC, TESTIMONIAL_TBC];
+
 
 export default function HomePage() {
   const [slide, setSlide] = useState(0);
@@ -153,12 +146,6 @@ export default function HomePage() {
             are known individually and taught well. We combine a structured academic programme with
             close pastoral care, so that children grow in knowledge, confidence and character.
           </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm text-muted-foreground">
-            <span>Year established: </span>
-            <Tbc>{TBC}</Tbc>
-            <span className="ml-3">Curriculum: </span>
-            <Tbc>{TBC}</Tbc>
-          </div>
           <Link
             to="/about"
             className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-lg border border-border px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
@@ -253,8 +240,8 @@ export default function HomePage() {
                   Boarders
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Supervised routines, structured evening study and pastoral care. Boarding details
-                  are confirmed by the Academy: <Tbc>{TBC}</Tbc>
+                  Supervised routines, structured evening study and pastoral care, with regular
+                  communication with parents.
                 </p>
               </div>
             </div>
@@ -347,22 +334,6 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Achievements */}
-      <Section>
-        <SectionHeading
-          eyebrow="Achievements"
-          title="Our achievements"
-          description="We publish only achievements the Academy has verified."
-        />
-        <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-3">
-          {[Trophy, Trophy, Trophy].map((Icon, i) => (
-            <div key={i} className="rounded-xl border border-dashed border-border bg-card p-6 text-center">
-              <Icon aria-hidden="true" className="mx-auto mb-3 h-8 w-8 text-primary" />
-              <p className="text-sm text-muted-foreground">{ACHIEVEMENT_TBC}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
 
       {/* News and events */}
       <Section muted>
@@ -386,22 +357,6 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Testimonials */}
-      <Section>
-        <SectionHeading
-          eyebrow="Our parents"
-          title="What parents say"
-          description="Only genuine testimonials approved by the families who gave them are published here."
-        />
-        <div className="grid gap-6 md:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <blockquote key={i} className="rounded-xl border border-dashed border-border bg-card p-6">
-              <Quote aria-hidden="true" className="mb-3 h-6 w-6 text-primary" />
-              <p className="text-sm text-muted-foreground">{t}</p>
-            </blockquote>
-          ))}
-        </div>
-      </Section>
 
       <AdmissionsCta
         title="Enrol your child at Embakasi Benedicta Academy"

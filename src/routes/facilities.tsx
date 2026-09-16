@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/site/PageHero";
-import { Section, SectionHeading, Tbc } from "@/components/site/Section";
+import { Section, SectionHeading } from "@/components/site/Section";
 import { AdmissionsCta } from "@/components/site/CtaGroup";
-import { SITE_URL, TBC } from "@/lib/school";
+import { SITE_URL } from "@/lib/school";
 import heroImage from "@/assets/hero-7.jpeg";
 import library from "@/assets/hero-8.jpeg";
 import campus from "@/assets/hero-6.jpeg";
@@ -69,14 +69,6 @@ const confirmed = [
   },
 ];
 
-const toConfirm = [
-  "Computer facilities",
-  "Science facilities",
-  "Sports facilities",
-  "Boarding facilities",
-  "Dining facilities",
-  "Sick bay and healthcare",
-];
 
 function FacilitiesPage() {
   return (
@@ -111,20 +103,6 @@ function FacilitiesPage() {
         </div>
       </Section>
 
-      <Section muted>
-        <SectionHeading
-          title="Further facilities"
-          description="These facilities will be published with photographs and descriptions once the Academy confirms them."
-        />
-        <ul className="mx-auto grid max-w-3xl gap-3 sm:grid-cols-2">
-          {toConfirm.map((f) => (
-            <li key={f} className="flex items-center justify-between gap-3 rounded-lg border border-border bg-card px-4 py-3">
-              <span className="text-sm font-medium text-foreground">{f}</span>
-              <Tbc>{TBC}</Tbc>
-            </li>
-          ))}
-        </ul>
-      </Section>
 
       <AdmissionsCta title="See our facilities for yourself" description="Book a school visit and walk the campus with our team." />
     </Layout>
