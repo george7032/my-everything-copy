@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Facebook, Mail, MapPin, MessageCircle, Music2, Phone, Youtube } from "lucide-react";
 
 import logoImage from "@/assets/logo.png";
-import { academicLevels, school, socialLinks, TBC, whatsappLink } from "@/lib/school";
+import { academicLevels, school, socialLinks, whatsappLink } from "@/lib/school";
 
 const quickLinks = [
   { name: "Home", to: "/" as const },
